@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-
+import React, { useState } from "react";
+import "./app.module.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>App</h1>
+      <div className={styles.ratingContainer}></div>
     </>
-    )
-
+  );
 }
 
-export default App
+export default App;
