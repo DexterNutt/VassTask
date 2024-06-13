@@ -30,3 +30,7 @@
   text-align: center;
   color: #767676;
 }
+
+.star {
+  cursor: pointer;
+}
