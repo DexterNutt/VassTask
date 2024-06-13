@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+.title {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22.25px;
+  text-align: center;
+}
+
+.starsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.text {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #767676;
+}
