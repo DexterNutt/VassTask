@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { RatingReview } from "./starsComp/StarsRating";
 import styles from "./App.module.css";
 
 function App() {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(null);
 
   return (
     <>
@@ -12,7 +11,17 @@ function App() {
           <h4>Please Rate</h4>
         </div>
         <div className={styles.starsContainer}>
-          <RatingReview rating={rating} setRating={setRating} />
+          {[1, 2, 3, 4, 5].map((star) => {
+            return (
+              <img
+                className={styles.star}
+                src={rating >= star ? "/ShapeGold.png" : "/Shape.png"}
+                onClick={() => {
+                  setRating(star);
+                }}
+              ></img>
+            );
+          })}
         </div>
         <div className={styles.text}>
           <p>Your feedback is very important to us.</p>
