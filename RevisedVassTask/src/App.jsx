@@ -20,18 +20,21 @@ function App() {
           <h4>Please Rate</h4>
         </div>
         <div className={styles.starsContainer}>
-          {[1, 2, 3, 4, 5].map((star, i) => {
-            return (
-              <img
-                key={i}
-                className={styles.star}
-                src={rating >= star ? "/ShapeGold.png" : "/Shape.png"}
-                onClick={() => {
-                  setRating(star);
-                }}
-              ></img>
-            );
-          })}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star, i) => (
+            <img
+              key={i}
+              className={styles.star}
+              src={
+                rating >= star / 2
+                  ? star % 2 === 0
+                    ? "/gold_star.png"
+                    : "/half_star.png"
+                  : "/star.png"
+              }
+              onClick={() => setRating(star / 2)}
+              alt={`star ${star / 2}`}
+            />
+          ))}
         </div>
         <div className={styles.text}>
           <p>
