@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 
-const storedData = localStorage.getItem("rating");
-
 function App() {
+  const storedData = localStorage.getItem("rating");
   const [rating, setRating] = useState([]);
   useEffect(() => {
     setRating(storedData);
@@ -13,6 +12,13 @@ function App() {
     localStorage.setItem("rating", JSON.stringify(rating));
   }, [rating]);
 
+  const handleClick = (event, star) => {
+    const { left, width } = event.target.getBoundingClientRect();
+    const clickPosition = event.clientX - left;
+    const starRating = clickPosition > width / 2 ? star : star - 0.5;
+    setRating(starRating);
+  };
+
   return (
     <>
       <div className={styles.componentContainer}>
@@ -20,19 +26,18 @@ function App() {
           <h4>Please Rate</h4>
         </div>
         <div className={styles.starsContainer}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star, i) => (
+          {[1, 2, 3, 4, 5].map((star) => (
             <img
-              key={i}
+              key={star}
               className={styles.star}
               src={
-                rating >= star / 2
-                  ? star % 2 === 0
-                    ? "/gold_star.png"
-                    : "/half_star.png"
+                rating >= star
+                  ? "/gold_star.png"
+                  : rating >= star - 0.5
+                  ? "/half_star.png"
                   : "/star.png"
               }
-              onClick={() => setRating(star / 2)}
-              alt={`star ${star / 2}`}
+              onClick={(event) => handleClick(event, star)}
             />
           ))}
         </div>
